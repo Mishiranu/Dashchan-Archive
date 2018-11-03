@@ -15,38 +15,33 @@ import chan.text.ParseException;
 import chan.text.TemplateParser;
 import chan.util.StringUtils;
 
-public class ArhivachThreadsParser
-{
-	private final String mSource;
-	private final ArhivachChanConfiguration mConfiguration;
-	private final ArhivachChanLocator mLocator;
-	private final boolean mHandlePagesCount;
+public class ArhivachThreadsParser {
+	private final String source;
+	private final ArhivachChanConfiguration configuration;
+	private final ArhivachChanLocator locator;
+	private final boolean handlePagesCount;
 
-	private Post mPost;
-	private final LinkedHashMap<Post, Integer> mPostHolders = new LinkedHashMap<>();
-	private final ArrayList<FileAttachment> mAttachments = new ArrayList<>();
-	private boolean mNextThumbnail;
+	private Post post;
+	private final LinkedHashMap<Post, Integer> postHolders = new LinkedHashMap<>();
+	private final ArrayList<FileAttachment> attachments = new ArrayList<>();
+	private boolean nextThumbnail;
 
 	private static final Pattern PATTERN_BLOCK_TEXT = Pattern.compile("<a style=\"display:block;\".*?>(.*)</a>");
 	private static final Pattern PATTERN_SUBJECT = Pattern.compile("^<b>(.*?)</b> &mdash; ");
 	private static final Pattern PATTERN_NOT_ARCHIVED = Pattern.compile("<a.*?>\\[.*?\\] Ожидание обновления</a>");
 
-	public ArhivachThreadsParser(String source, Object linked, boolean handlePagesCount)
-	{
-		mSource = source;
-		mConfiguration = ChanConfiguration.get(linked);
-		mLocator = ChanLocator.get(linked);
-		mHandlePagesCount = handlePagesCount;
+	public ArhivachThreadsParser(String source, Object linked, boolean handlePagesCount) {
+		this.source = source;
+		this.configuration = ChanConfiguration.get(linked);
+		this.locator = ChanLocator.get(linked);
+		this.handlePagesCount = handlePagesCount;
 	}
 
-	public ArrayList<Posts> convertThreads() throws ParseException
-	{
-		PARSER.parse(mSource, this);
-		if (mPostHolders.size() > 0)
-		{
-			ArrayList<Posts> threads = new ArrayList<>(mPostHolders.size());
-			for (LinkedHashMap.Entry<Post, Integer> entry : mPostHolders.entrySet())
-			{
+	public ArrayList<Posts> convertThreads() throws ParseException {
+		PARSER.parse(source, this);
+		if (postHolders.size() > 0) {
+			ArrayList<Posts> threads = new ArrayList<>(postHolders.size());
+			for (LinkedHashMap.Entry<Post, Integer> entry : postHolders.entrySet()) {
 				threads.add(new Posts(entry.getKey()).addPostsCount(entry.getValue()));
 			}
 			return threads;
@@ -54,108 +49,91 @@ public class ArhivachThreadsParser
 		return null;
 	}
 
-	public ArrayList<Post> convertPosts() throws ParseException
-	{
-		PARSER.parse(mSource, this);
-		if (mPostHolders.size() > 0)
-		{
-			ArrayList<Post> posts = new ArrayList<>(mPostHolders.size());
-			for (Post post : mPostHolders.keySet()) posts.add(post);
+	public ArrayList<Post> convertPosts() throws ParseException {
+		PARSER.parse(source, this);
+		if (postHolders.size() > 0) {
+			ArrayList<Post> posts = new ArrayList<>(postHolders.size());
+			for (Post post : postHolders.keySet()) {
+				posts.add(post);
+			}
 			return posts;
 		}
 		return null;
 	}
 
 	private static final TemplateParser<ArhivachThreadsParser> PARSER = TemplateParser.<ArhivachThreadsParser>builder()
-			.starts("tr", "id", "thread_row_").open((instance, holder, tagName, attributes) ->
-	{
+			.starts("tr", "id", "thread_row_").open((instance, holder, tagName, attributes) -> {
 		String number = attributes.get("id").substring(11);
-		holder.mPost = new Post().setThreadNumber(number).setPostNumber(number);
-		holder.mAttachments.clear();
+		holder.post = new Post().setThreadNumber(number).setPostNumber(number);
+		holder.attachments.clear();
 		return false;
-
-	}).equals("span", "class", "thread_posts_count").content((instance, holder, text) ->
-	{
+	}).equals("span", "class", "thread_posts_count").content((instance, holder, text) -> {
 		int postsCount = Integer.parseInt(text.trim());
-		if (postsCount >= 0) holder.mPostHolders.put(holder.mPost, postsCount);
-		else holder.mPost = null; // Thread is not archived
-
-	}).equals("a", "class", "expand_image").open((instance, holder, tagName, attributes) ->
-	{
-		if (holder.mPost != null)
-		{
-			FileAttachment attachment = ArhivachPostsParser.parseExpandImage(attributes, holder.mLocator);
-			if (attachment != null)
-			{
-				holder.mAttachments.add(attachment);
-				holder.mNextThumbnail = true;
+		if (postsCount >= 0) {
+			holder.postHolders.put(holder.post, postsCount);
+		} else {
+			holder.post = null; // Thread is not archived
+		}
+	}).equals("a", "class", "expand_image").open((instance, holder, tagName, attributes) -> {
+		if (holder.post != null) {
+			FileAttachment attachment = ArhivachPostsParser.parseExpandImage(attributes, holder.locator);
+			if (attachment != null) {
+				holder.attachments.add(attachment);
+				holder.nextThumbnail = true;
 			}
 		}
 		return false;
-
-	}).name("img").open((instance, holder, tagName, attributes) ->
-	{
-		if (holder.mPost != null && holder.mNextThumbnail)
-		{
-			ArhivachPostsParser.parseImageThumbnail(attributes, holder.mAttachments, holder.mLocator);
-			holder.mNextThumbnail = false;
+	}).name("img").open((instance, holder, tagName, attributes) -> {
+		if (holder.post != null && holder.nextThumbnail) {
+			ArhivachPostsParser.parseImageThumbnail(attributes, holder.attachments, holder.locator);
+			holder.nextThumbnail = false;
 		}
 		return false;
-
-	}).name("iframe").open((instance, holder, tagName, attributes) ->
-	{
-		if (holder.mPost != null && holder.mNextThumbnail)
-		{
-			ArhivachPostsParser.parseIframeThumbnail(attributes, holder.mAttachments, holder.mLocator);
-			holder.mNextThumbnail = false;
+	}).name("iframe").open((instance, holder, tagName, attributes) -> {
+		if (holder.post != null && holder.nextThumbnail) {
+			ArhivachPostsParser.parseIframeThumbnail(attributes, holder.attachments, holder.locator);
+			holder.nextThumbnail = false;
 		}
 		return false;
-
-	}).equals("div", "class", "thread_text").open((instance, holder, tagName, attributes) -> holder.mPost != null)
-			.content((instance, holder, text) ->
-	{
-		holder.mNextThumbnail = false;
+	}).equals("div", "class", "thread_text").open((instance, holder, tagName, attributes) -> holder.post != null)
+			.content((instance, holder, text) -> {
+		holder.nextThumbnail = false;
 		text = text.trim();
-		if (PATTERN_NOT_ARCHIVED.matcher(text).matches())
-		{
-			holder.mPostHolders.remove(holder.mPost);
-			holder.mPost = null; // Thread is not archived
+		if (PATTERN_NOT_ARCHIVED.matcher(text).matches()) {
+			holder.postHolders.remove(holder.post);
+			holder.post = null; // Thread is not archived
 			return;
 		}
 		Matcher matcher = PATTERN_BLOCK_TEXT.matcher(text);
-		if (matcher.matches()) text = matcher.group(1);
+		if (matcher.matches()) {
+			text = matcher.group(1);
+		}
 		matcher = PATTERN_SUBJECT.matcher(text);
-		if (matcher.find())
-		{
-			holder.mPost.setSubject(StringUtils.nullIfEmpty(StringUtils.clearHtml(matcher.group(1)).trim()));
+		if (matcher.find()) {
+			holder.post.setSubject(StringUtils.nullIfEmpty(StringUtils.clearHtml(matcher.group(1)).trim()));
 			text = text.substring(matcher.group(0).length());
 		}
-		if (text.length() > 500 && !text.endsWith(".")) text += '\u2026';
-		holder.mPost.setComment(StringUtils.nullIfEmpty(StringUtils.clearHtml(text).trim()));
-
-	}).equals("td", "class", "thread_date").open((instance, holder, tagName, attributes) -> holder.mPost != null)
-			.content((instance, holder, text) ->
-	{
+		if (text.length() > 500 && !text.endsWith(".")) {
+			text += '\u2026';
+		}
+		holder.post.setComment(StringUtils.nullIfEmpty(StringUtils.clearHtml(text).trim()));
+	}).equals("td", "class", "thread_date").open((instance, holder, tagName, attributes) -> holder.post != null)
+			.content((instance, holder, text) -> {
 		GregorianCalendar calendar = ArhivachPostsParser.parseCommonTime(text);
-		if (calendar != null)
-		{
+		if (calendar != null) {
 			calendar.add(GregorianCalendar.HOUR, -3);
-			holder.mPost.setTimestamp(calendar.getTimeInMillis());
+			holder.post.setTimestamp(calendar.getTimeInMillis());
 		}
-		if (holder.mAttachments.size() > 0) holder.mPost.setAttachments(holder.mAttachments);
-		holder.mPost = null;
-
-	}).equals("a", "title", "Последняя страница").open((instance, holder, tagName, a) -> holder.mHandlePagesCount)
-			.content((instance, holder, text) ->
-	{
-		try
-		{
-			holder.mConfiguration.storePagesCount(null, Integer.parseInt(text.trim()));
+		if (holder.attachments.size() > 0) {
+			holder.post.setAttachments(holder.attachments);
 		}
-		catch (NumberFormatException e)
-		{
-
+		holder.post = null;
+	}).equals("a", "title", "Последняя страница").open((instance, holder, tagName, a) -> holder.handlePagesCount)
+			.content((instance, holder, text) -> {
+		try {
+			holder.configuration.storePagesCount(null, Integer.parseInt(text.trim()));
+		} catch (NumberFormatException e) {
+			// Ignore exception
 		}
-
 	}).prepare();
 }

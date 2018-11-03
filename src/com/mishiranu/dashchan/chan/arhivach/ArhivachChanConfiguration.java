@@ -5,10 +5,8 @@ import android.util.Pair;
 
 import chan.content.ChanConfiguration;
 
-public class ArhivachChanConfiguration extends ChanConfiguration
-{
-	public ArhivachChanConfiguration()
-	{
+public class ArhivachChanConfiguration extends ChanConfiguration {
+	public ArhivachChanConfiguration() {
 		request(OPTION_SINGLE_BOARD_MODE);
 		request(OPTION_ALLOW_USER_AUTHORIZATION);
 		setSingleBoardName(null);
@@ -18,16 +16,14 @@ public class ArhivachChanConfiguration extends ChanConfiguration
 	}
 
 	@Override
-	public Board obtainBoardConfiguration(String boardName)
-	{
+	public Board obtainBoardConfiguration(String boardName) {
 		Board board = new Board();
 		board.allowSearch = true;
 		return board;
 	}
 
 	@Override
-	public Authorization obtainUserAuthorizationConfiguration()
-	{
+	public Authorization obtainUserAuthorizationConfiguration() {
 		Resources resources = getResources();
 		Authorization authorization = new Authorization();
 		authorization.fieldsCount = 2;
@@ -38,8 +34,7 @@ public class ArhivachChanConfiguration extends ChanConfiguration
 	}
 
 	@Override
-	public Archivation obtainArchivationConfiguration()
-	{
+	public Archivation obtainArchivationConfiguration() {
 		Resources resources = getResources();
 		Archivation archivation = new Archivation();
 		archivation.hosts.add("2ch.hk");
@@ -51,8 +46,7 @@ public class ArhivachChanConfiguration extends ChanConfiguration
 	}
 
 	@Override
-	public Statistics obtainStatisticsConfiguration()
-	{
+	public Statistics obtainStatisticsConfiguration() {
 		Statistics statistics = new Statistics();
 		statistics.postsSent = false;
 		statistics.threadsCreated = false;
