@@ -66,7 +66,7 @@ public class ArhivachThreadsParser
 		return null;
 	}
 
-	private static final TemplateParser<ArhivachThreadsParser> PARSER = new TemplateParser<ArhivachThreadsParser>()
+	private static final TemplateParser<ArhivachThreadsParser> PARSER = TemplateParser.<ArhivachThreadsParser>builder()
 			.starts("tr", "id", "thread_row_").open((instance, holder, tagName, attributes) ->
 	{
 		String number = attributes.get("id").substring(11);

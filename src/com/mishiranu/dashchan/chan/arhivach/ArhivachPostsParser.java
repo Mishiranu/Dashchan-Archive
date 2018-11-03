@@ -242,7 +242,7 @@ public class ArhivachPostsParser
 		return 0L;
 	}
 
-	private static final TemplateParser<ArhivachPostsParser> PARSER = new TemplateParser<ArhivachPostsParser>()
+	private static final TemplateParser<ArhivachPostsParser> PARSER = TemplateParser.<ArhivachPostsParser>builder()
 			.equals("div", "class", "span3").content((instance, holder, text) ->
 	{
 		holder.mThreadUri = Uri.parse(StringUtils.clearHtml(text).trim());
