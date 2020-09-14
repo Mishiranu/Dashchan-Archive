@@ -1,9 +1,8 @@
 package chan.util;
 
+import android.graphics.Bitmap;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import android.graphics.Bitmap;
 
 /**
  * <p>Provides some utilities to work with JSON objects, bitmaps and logging.</p>
@@ -14,14 +13,14 @@ public class CommonUtils {
 	}
 
 	/**
-	 * <p>Wait time = {@code interval} - (current time - {@code startTime}).
+	 * <p>Wait time = {@code interval} - (current time - {@code startRealtime}).
 	 * Returns whether thread was interrupted during sleep.</p>
 	 *
-	 * @param startTime Time when operation was started.
+	 * @param startRealtime Time when operation was started.
 	 * @param interval Minimum time for operation.
 	 * @return True if thread was interrupted.
 	 */
-	public static boolean sleepMaxTime(long startTime, long interval) {
+	public static boolean sleepMaxRealtime(long startRealtime, long interval) {
 		throw new IllegalAccessError();
 	}
 
