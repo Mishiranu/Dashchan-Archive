@@ -1,7 +1,6 @@
 package chan.content;
 
 import android.util.Pair;
-
 import chan.text.CommentEditor;
 
 /**

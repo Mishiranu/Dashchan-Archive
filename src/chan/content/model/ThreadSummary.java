@@ -10,7 +10,7 @@ public final class ThreadSummary {
 	 *
 	 * @param boardName Board name.
 	 * @param threadNumber Thread number.
-	 * @param description Short description, may be subject or some first sentences of comment.
+	 * @param description Short description, may be the subject or some first sentences of the comment.
 	 */
 	public ThreadSummary(String boardName, String threadNumber, String description) {
 		throw new IllegalAccessError();
@@ -18,6 +18,8 @@ public final class ThreadSummary {
 
 	/**
 	 * <p>Returns board name.</p>
+	 *
+	 * @return Board name.
 	 */
 	public String getBoardName() {
 		throw new IllegalAccessError();
@@ -25,6 +27,8 @@ public final class ThreadSummary {
 
 	/**
 	 * <p>Returns thread number.</p>
+	 *
+	 * @return Thread number.
 	 */
 	public String getThreadNumber() {
 		throw new IllegalAccessError();
@@ -32,6 +36,8 @@ public final class ThreadSummary {
 
 	/**
 	 * <p>Returns thread short description.</p>
+	 *
+	 * @return Thread description.
 	 */
 	public String getDescription() {
 		throw new IllegalAccessError();
@@ -39,6 +45,8 @@ public final class ThreadSummary {
 
 	/**
 	 * <p>Returns posts count.</p>
+	 *
+	 * @return Posts count.
 	 */
 	public int getPostsCount() {
 		throw new IllegalAccessError();
@@ -46,6 +54,9 @@ public final class ThreadSummary {
 
 	/**
 	 * <p>Stores posts count in this model.</p>
+	 *
+	 * @param postsCount Number of posts in the thread.
+	 * @return This model.
 	 */
 	public ThreadSummary setPostsCount(int postsCount) {
 		throw new IllegalAccessError();

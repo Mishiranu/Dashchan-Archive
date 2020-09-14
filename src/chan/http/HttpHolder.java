@@ -1,9 +1,8 @@
 package chan.http;
 
+import android.net.Uri;
 import java.util.List;
 import java.util.Map;
-
-import android.net.Uri;
 
 /**
  * <p>HTTP connection holder.</p>

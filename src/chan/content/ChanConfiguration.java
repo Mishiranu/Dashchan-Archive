@@ -1,12 +1,11 @@
 package chan.content;
 
-import java.io.File;
-import java.util.List;
-import java.util.Set;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.Pair;
+import java.io.File;
+import java.util.List;
+import java.util.Set;
 
 /**
  * <p>Provides extension configuration.</p>

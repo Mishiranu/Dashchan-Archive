@@ -1,7 +1,6 @@
 package chan.content.model;
 
 import android.net.Uri;
-
 import chan.content.ChanLocator;
 
 /**
@@ -21,6 +20,7 @@ public final class FileAttachment implements Attachment {
 	 * <p>Returns attachment file URI.</p>
 	 *
 	 * @param locator {@link ChanLocator} instance to decode URI in model.
+	 * @return Attachment file URI.
 	 */
 	public Uri getFileUri(ChanLocator locator) {
 		throw new IllegalAccessError();
@@ -41,6 +41,7 @@ public final class FileAttachment implements Attachment {
 	 * <p>Returns attachment thumbnail URI.</p>
 	 *
 	 * @param locator {@link ChanLocator} instance to decode URI in model.
+	 * @return Attachment thumbnail URI.
 	 */
 	public Uri getThumbnailUri(ChanLocator locator) {
 		throw new IllegalAccessError();
@@ -59,6 +60,8 @@ public final class FileAttachment implements Attachment {
 
 	/**
 	 * <p>Returns original file name (file name before uploading).</p>
+	 *
+	 * @return Original file name.
 	 */
 	public String getOriginalName() {
 		throw new IllegalAccessError();
@@ -76,6 +79,8 @@ public final class FileAttachment implements Attachment {
 
 	/**
 	 * <p>Returns file size in bytes.</p>
+	 *
+	 * @return File size.
 	 */
 	public int getSize() {
 		throw new IllegalAccessError();
@@ -93,6 +98,8 @@ public final class FileAttachment implements Attachment {
 
 	/**
 	 * <p>Returns file width in pixels.</p>
+	 *
+	 * @return File width.
 	 */
 	public int getWidth() {
 		throw new IllegalAccessError();
@@ -110,6 +117,8 @@ public final class FileAttachment implements Attachment {
 
 	/**
 	 * <p>Returns file height in pixels.</p>
+	 *
+	 * @return File height.
 	 */
 	public int getHeight() {
 		throw new IllegalAccessError();
@@ -127,6 +136,8 @@ public final class FileAttachment implements Attachment {
 
 	/**
 	 * <p>Returns whether file is spoiler.</p>
+	 *
+	 * @return Whether file is spoiler.
 	 */
 	public boolean isSpoiler() {
 		throw new IllegalAccessError();

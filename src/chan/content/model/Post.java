@@ -1,9 +1,8 @@
 package chan.content.model;
 
+import chan.content.ChanMarkup;
 import java.io.Serializable;
 import java.util.Collection;
-
-import chan.content.ChanMarkup;
 
 /**
  * <p>Model containing post data.</p>
@@ -19,6 +18,8 @@ import chan.content.ChanMarkup;
 public final class Post implements Serializable, Comparable<Post> {
 	/**
 	 * <p>Returns real thread number with this post.</p>
+	 *
+	 * @return Thread number.
 	 */
 	public String getThreadNumber() {
 		throw new IllegalAccessError();
@@ -37,6 +38,8 @@ public final class Post implements Serializable, Comparable<Post> {
 
 	/**
 	 * <p>Returns parent post number.</p>
+	 *
+	 * @return Parent post number.
 	 */
 	public String getParentPostNumber() {
 		throw new IllegalAccessError();
@@ -56,6 +59,8 @@ public final class Post implements Serializable, Comparable<Post> {
 
 	/**
 	 * <p>Returns post number.</p>
+	 *
+	 * @return Post number.
 	 */
 	public String getPostNumber() {
 		throw new IllegalAccessError();
@@ -73,6 +78,8 @@ public final class Post implements Serializable, Comparable<Post> {
 
 	/**
 	 * <p>Returns date of post created.</p>
+	 *
+	 * @return Post creation timestamp.
 	 */
 	public long getTimestamp() {
 		throw new IllegalAccessError();
@@ -90,6 +97,8 @@ public final class Post implements Serializable, Comparable<Post> {
 
 	/**
 	 * <p>Returns post subject.</p>
+	 *
+	 * @return Post subject.
 	 */
 	public String getSubject() {
 		throw new IllegalAccessError();
@@ -107,6 +116,8 @@ public final class Post implements Serializable, Comparable<Post> {
 
 	/**
 	 * <p>Returns post comment.</p>
+	 *
+	 * @return Post comment.
 	 */
 	public String getComment() {
 		throw new IllegalAccessError();
@@ -127,6 +138,8 @@ public final class Post implements Serializable, Comparable<Post> {
 	 *
 	 * <p>This method calls when application want to get original comment markup. By default {@link ChanMarkup} provides
 	 * unmark operation, but you can override this method and provide more correct operation if it possible.</p>
+	 *
+	 * @return Original comment markup.
 	 */
 	public String getCommentMarkup() {
 		throw new IllegalAccessError();
@@ -147,6 +160,8 @@ public final class Post implements Serializable, Comparable<Post> {
 
 	/**
 	 * <p>Returns poster name.</p>
+	 *
+	 * @return Poster name.
 	 */
 	public String getName() {
 		throw new IllegalAccessError();
@@ -164,6 +179,8 @@ public final class Post implements Serializable, Comparable<Post> {
 
 	/**
 	 * <p>Returns poster identifier.</p>
+	 *
+	 * @return Poster identifier.
 	 */
 	public String getIdentifier() {
 		throw new IllegalAccessError();
@@ -181,6 +198,8 @@ public final class Post implements Serializable, Comparable<Post> {
 
 	/**
 	 * <p>Returns poster tripcode.</p>
+	 *
+	 * @return Poster tripcode.
 	 */
 	public String getTripcode() {
 		throw new IllegalAccessError();
@@ -198,6 +217,8 @@ public final class Post implements Serializable, Comparable<Post> {
 
 	/**
 	 * <p>Returns poster capcode.</p>
+	 *
+	 * @return Poster capcode.
 	 */
 	public String getCapcode() {
 		throw new IllegalAccessError();
@@ -215,6 +236,8 @@ public final class Post implements Serializable, Comparable<Post> {
 
 	/**
 	 * <p>Returns poster email.</p>
+	 *
+	 * @return Poster email.
 	 */
 	public String getEmail() {
 		throw new IllegalAccessError();
@@ -233,6 +256,8 @@ public final class Post implements Serializable, Comparable<Post> {
 
 	/**
 	 * <p>Returns attachments count.</p>
+	 *
+	 * @return Attachments count.
 	 */
 	public int getAttachmentsCount() {
 		throw new IllegalAccessError();
@@ -240,6 +265,8 @@ public final class Post implements Serializable, Comparable<Post> {
 
 	/**
 	 * <p>Returns attachment at given {@code index}.</p>
+	 *
+	 * @return {@link Attachment} instance.
 	 */
 	public Attachment getAttachmentAt(int index) {
 		throw new IllegalAccessError();
@@ -267,6 +294,8 @@ public final class Post implements Serializable, Comparable<Post> {
 
 	/**
 	 * <p>Returns icons count.</p>
+	 *
+	 * @return Icons count.
 	 */
 	public int getIconsCount() {
 		throw new IllegalAccessError();
@@ -274,6 +303,8 @@ public final class Post implements Serializable, Comparable<Post> {
 
 	/**
 	 * <p>Returns icon at given {@code index}.</p>
+	 *
+	 * @return {@link Icon} instance.
 	 */
 	public Icon getIconAt(int index) {
 		throw new IllegalAccessError();
@@ -301,6 +332,8 @@ public final class Post implements Serializable, Comparable<Post> {
 
 	/**
 	 * <p>Returns whether post contains sage mark.</p>
+	 *
+	 * @return True if posts contains sage mark.
 	 */
 	public boolean isSage() {
 		throw new IllegalAccessError();
@@ -318,6 +351,8 @@ public final class Post implements Serializable, Comparable<Post> {
 
 	/**
 	 * <p>Returns whether thread is sticky.</p>
+	 *
+	 * @return True if thread is sticky.
 	 */
 	public boolean isSticky() {
 		throw new IllegalAccessError();
@@ -335,6 +370,8 @@ public final class Post implements Serializable, Comparable<Post> {
 
 	/**
 	 * <p>Returns whether thread is closed.</p>
+	 *
+	 * @return True if thread is closed.
 	 */
 	public boolean isClosed() {
 		throw new IllegalAccessError();
@@ -352,6 +389,8 @@ public final class Post implements Serializable, Comparable<Post> {
 
 	/**
 	 * <p>Returns whether thread is archived.</p>
+	 *
+	 * @return True if thread is archived.
 	 */
 	public boolean isArchived() {
 		throw new IllegalAccessError();
@@ -369,6 +408,8 @@ public final class Post implements Serializable, Comparable<Post> {
 
 	/**
 	 * <p>Returns whether thread is cyclical.</p>
+	 *
+	 * @return Trust if thread is cyclical.
 	 */
 	public boolean isCyclical() {
 		throw new IllegalAccessError();
@@ -386,6 +427,8 @@ public final class Post implements Serializable, Comparable<Post> {
 
 	/**
 	 * <p>Returns whether poster was warned by moderator.</p>
+	 *
+	 * @return True if poster is warned.
 	 */
 	public boolean isPosterWarned() {
 		throw new IllegalAccessError();
@@ -403,6 +446,8 @@ public final class Post implements Serializable, Comparable<Post> {
 
 	/**
 	 * <p>Returns whether poster was banned by moderator.</p>
+	 *
+	 * @return True if poster is banned.
 	 */
 	public boolean isPosterBanned() {
 		throw new IllegalAccessError();
@@ -420,6 +465,8 @@ public final class Post implements Serializable, Comparable<Post> {
 
 	/**
 	 * <p>Returns whether post was written by original poster.</p>
+	 *
+	 * @return True if poster is original poster.
 	 */
 	public boolean isOriginalPoster() {
 		throw new IllegalAccessError();
@@ -437,6 +484,8 @@ public final class Post implements Serializable, Comparable<Post> {
 
 	/**
 	 * <p>Returns whether poster name is default.</p>
+	 *
+	 * @return True if name is default.
 	 */
 	public boolean isDefaultName() {
 		throw new IllegalAccessError();
@@ -453,7 +502,9 @@ public final class Post implements Serializable, Comparable<Post> {
 	}
 
 	/**
-	 * <p>Returns whether bump limit reached.</p>
+	 * <p>Returns whether bump limit is reached.</p>
+	 *
+	 * @return True if bump limit is reached.
 	 */
 	public boolean isBumpLimitReached() {
 		throw new IllegalAccessError();
@@ -469,6 +520,12 @@ public final class Post implements Serializable, Comparable<Post> {
 		throw new IllegalAccessError();
 	}
 
+	/**
+	 * Compares this post with specified post.
+	 *
+	 * @param another Post to compare with.
+	 * @return Integer value which represents {@code Comparable} result.
+	 */
 	@Override
 	public int compareTo(Post another) {
 		throw new IllegalAccessError();

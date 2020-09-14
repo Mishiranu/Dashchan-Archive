@@ -1,9 +1,8 @@
 package chan.http;
 
+import android.graphics.Bitmap;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import android.graphics.Bitmap;
 
 /**
  * <p>HTTP response holder.</p>

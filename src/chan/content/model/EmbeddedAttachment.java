@@ -7,16 +7,16 @@ import android.net.Uri;
  */
 public final class EmbeddedAttachment implements Attachment {
 	/**
-	 * Embedded file content type.
+	 * <p>Embedded file content type.</p>
 	 */
 	public enum ContentType {
 		/**
-		 * Audio file.
+		 * <p>Audio file.</p>
 		 */
 		AUDIO,
 
 		/**
-		 * Video file.
+		 * <p>Video file.</p>
 		 */
 		VIDEO
 	}
@@ -41,6 +41,8 @@ public final class EmbeddedAttachment implements Attachment {
 
 	/**
 	 * <p>Returns attachment file URI.</p>
+	 *
+	 * @return Attachment file URI.
 	 */
 	public Uri getFileUri() {
 		throw new IllegalAccessError();
@@ -48,6 +50,8 @@ public final class EmbeddedAttachment implements Attachment {
 
 	/**
 	 * <p>Returns attachment thumbnail URI.</p>
+	 *
+	 * @return Attachment thumbnail URI.
 	 */
 	public Uri getThumbnailUri() {
 		throw new IllegalAccessError();
@@ -55,6 +59,8 @@ public final class EmbeddedAttachment implements Attachment {
 
 	/**
 	 * <p>Returns attachment embedded type.</p>
+	 *
+	 * @return Attachment type.
 	 */
 	public String getEmbeddedType() {
 		throw new IllegalAccessError();
@@ -62,13 +68,17 @@ public final class EmbeddedAttachment implements Attachment {
 
 	/**
 	 * <p>Returns attachment content type.</p>
+	 *
+	 * @return Attachment content type.
 	 */
 	public ContentType getContentType() {
 		throw new IllegalAccessError();
 	}
 
 	/**
-	 * <p>Returns whether attachment could be downloaded by it's file URI.</p>
+	 * <p>Returns whether attachment can be downloaded by its file URI.</p>
+	 *
+	 * @return True is attachment can be downloaded.
 	 */
 	public boolean isCanDownload() {
 		throw new IllegalAccessError();
@@ -76,6 +86,8 @@ public final class EmbeddedAttachment implements Attachment {
 
 	/**
 	 * <p>Returns forced file name.</p>
+	 *
+	 * @return Forced file name.
 	 */
 	public String getForcedName() {
 		throw new IllegalAccessError();

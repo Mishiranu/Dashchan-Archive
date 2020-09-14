@@ -1,7 +1,6 @@
 package chan.http;
 
 import android.net.Uri;
-
 import java.io.OutputStream;
 
 /**

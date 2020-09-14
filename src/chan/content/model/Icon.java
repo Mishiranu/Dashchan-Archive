@@ -1,10 +1,8 @@
 package chan.content.model;
 
-import java.io.Serializable;
-
-import chan.content.ChanLocator;
-
 import android.net.Uri;
+import chan.content.ChanLocator;
+import java.io.Serializable;
 
 /**
  * <p>Model containing post icon.</p>
@@ -32,6 +30,8 @@ public final class Icon implements Serializable {
 
 	/**
 	 * <p>Returns icon title.</p>
+	 *
+	 * @return Icon title.
 	 */
 	public String getTitle() {
 		throw new IllegalAccessError();

@@ -1,8 +1,7 @@
 package chan.content.model;
 
-import java.util.Collection;
-
 import android.net.Uri;
+import java.util.Collection;
 
 /**
  * <p>Model containing posts data.</p>
@@ -42,6 +41,8 @@ import android.net.Uri;
 public final class Posts {
 	/**
 	 * <p>Returns array of post models this model holds.</p>
+	 *
+	 * @return Array of posts.
 	 */
 	public Post[] getPosts() {
 		throw new IllegalAccessError();
@@ -69,6 +70,8 @@ public final class Posts {
 
 	/**
 	 * <p>Returns archived thread URI.</p>
+	 *
+	 * @return URI of archived thread.
 	 */
 	public Uri getArchivedThreadUri() {
 		throw new IllegalAccessError();
@@ -86,6 +89,8 @@ public final class Posts {
 
 	/**
 	 * <p>Returns unique posters count.</p>
+	 *
+	 * @return Unique posters count.
 	 */
 	public int getUniquePosters() {
 		throw new IllegalAccessError();
@@ -103,6 +108,8 @@ public final class Posts {
 
 	/**
 	 * <p>Returns posts count in thread.</p>
+	 *
+	 * @return Posts count.
 	 */
 	public int getPostsCount() {
 		throw new IllegalAccessError();
@@ -120,6 +127,8 @@ public final class Posts {
 
 	/**
 	 * <p>Returns files count in thread.</p>
+	 *
+	 * @return Files count.
 	 */
 	public int getFilesCount() {
 		throw new IllegalAccessError();
@@ -137,6 +146,8 @@ public final class Posts {
 
 	/**
 	 * <p>Returns posts count with files.</p>
+	 *
+	 * @return Number of posts with files.
 	 */
 	public int getPostsWithFilesCount() {
 		throw new IllegalAccessError();

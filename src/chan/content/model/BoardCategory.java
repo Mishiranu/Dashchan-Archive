@@ -45,6 +45,11 @@ public final class BoardCategory implements Iterable<Board> {
 		throw new IllegalAccessError();
 	}
 
+	/**
+	 * Returns an iterator over {@link Board} elements.
+	 *
+	 * @return An iterator.
+	 */
 	@Override
 	public Iterator<Board> iterator() {
 		throw new IllegalAccessError();

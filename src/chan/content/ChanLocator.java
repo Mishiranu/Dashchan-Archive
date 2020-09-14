@@ -1,8 +1,7 @@
 package chan.content;
 
-import java.util.regex.Pattern;
-
 import android.net.Uri;
+import java.util.regex.Pattern;
 
 /**
  * <p>Provides URI handling and building.</p>

@@ -6,6 +6,8 @@ package chan.content.model;
 public final class Board implements Comparable<Board> {
 	/**
 	 * <p>Returns name of this board. For example {@code b}.</p>
+	 *
+	 * @return Board name.
 	 */
 	public String getBoardName() {
 		throw new IllegalAccessError();
@@ -13,6 +15,8 @@ public final class Board implements Comparable<Board> {
 
 	/**
 	 * <p>Returns title of this board. For example {@code Random}.</p>
+	 *
+	 * @return Board title.
 	 */
 	public String getTitle() {
 		throw new IllegalAccessError();
@@ -20,6 +24,8 @@ public final class Board implements Comparable<Board> {
 
 	/**
 	 * <p>Returns description of this board.</p>
+	 *
+	 * @return Board description.
 	 */
 	public String getDescription() {
 		throw new IllegalAccessError();

@@ -1,14 +1,8 @@
 package chan.content;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Collection;
-import java.util.List;
-
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.util.Pair;
-
 import chan.content.model.Board;
 import chan.content.model.BoardCategory;
 import chan.content.model.Post;
@@ -20,6 +14,10 @@ import chan.http.HttpRequest;
 import chan.http.HttpResponse;
 import chan.http.HttpValidator;
 import chan.http.MultipartEntity;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * <p>Provides performing connectivity with chan.</p>
