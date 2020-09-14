@@ -20,6 +20,7 @@ import java.util.Set;
  * <li>{@link #OPTION_READ_USER_BOARDS}</li>
  * <li>{@link #OPTION_ALLOW_CAPTCHA_PASS}</li>
  * <li>{@link #OPTION_ALLOW_USER_AUTHORIZATION}</li>
+ * <li>{@link #OPTION_LOCAL_MODE}</li>
  * </ul>
  *
  * <h3>Static configuration</h3>
@@ -159,6 +160,12 @@ public class ChanConfiguration {
 	 * <p>You should also implement {@link #obtainUserAuthorizationConfiguration()}.</p>
 	 */
 	public static final String OPTION_ALLOW_USER_AUTHORIZATION;
+
+	/**
+	 * <p>Turns extension into local mode, which disables caching, hides domain and proxy preferences, and disallows
+	 * archivation. This is useful for extensions which access local file systems or local networks.</p>
+	 */
+	public static final String OPTION_LOCAL_MODE;
 
 	public static final String CAPTCHA_TYPE_RECAPTCHA_2;
 	public static final String CAPTCHA_TYPE_RECAPTCHA_2_INVISIBLE;
