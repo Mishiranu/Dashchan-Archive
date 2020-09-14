@@ -3,7 +3,7 @@ package chan.content;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.Pair;
-import java.io.File;
+import chan.util.DataFile;
 import java.util.List;
 import java.util.Set;
 
@@ -978,7 +978,7 @@ public class ChanConfiguration {
 	/**
 	 * <p>Returns download directory.</p>
 	 */
-	public final File getDownloadDirectory() {
+	public final DataFile getDownloadDirectory() {
 		throw new IllegalAccessError();
 	}
 }
